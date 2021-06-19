@@ -33,24 +33,24 @@ var score = 0;
 var startButtonEl = document.getElementById("startButton")
 
 //start game button - when the button is click the timer starts
-// document.getElementById("startButton").addEventListener('click', function (){
-//     startButtonEl.disabled = true;
-//   var timeleft = 15
+document.getElementById("startButton").addEventListener('click', function (){
+    startButtonEl.disabled = true;
+  var timeleft = 15
 
-//     var downloadTimer = setInterval(function function1(){
-//         document.getElementById("countdownTimer").innerHTML = timeleft + 
-//         "&nbsp"+"seconds remaining!";
+    var downloadTimer = setInterval(function function1(){
+        document.getElementById("countdownTimer").innerHTML = timeleft + 
+        "&nbsp"+"seconds remaining!";
     
-//         timeleft -= 1;
-//         if(timeleft <= 0){
-//             clearInterval(downloadTimer);
-//             document.getElementById("countdownTimer").innerHTML = "Time is up!!!"
-//             displayQuestion();
-//         }
-//         }, 1000);
+        timeleft -= 1;
+        if(timeleft <= 0){
+            clearInterval(downloadTimer);
+            document.getElementById("countdownTimer").innerHTML = "Time is up!!!"
+            displayQuestion();
+        }
+        }, 1000);
     
-//         displayQuestion();
-//     }); 
+        displayQuestion();
+    }); 
 
 // when start button is clicked the game starts - first question is displayed
 function displayQuestion() {
