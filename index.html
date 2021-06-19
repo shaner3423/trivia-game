@@ -14,17 +14,25 @@
     </header>
 
     <section>
-        <div class="has-text-centered">
-            <button class="button is-danger is-outlined is-medium is-center"> START BUTTON</button>
+        <div class="startButton has-text-centered" >
+            <button id="startButton" class="button is-danger is-outlined is-medium is-center"> START BUTTON</button>
         </div>
         <div class="timer" id="timer">
-            <span id="countdown">30</span>
+            <span id="countdownTimer">15 seconds remaining!</span>
         </div>
     
-        <div class="questions" id="questions">
-            Questions Goes Here. Question Goes Here. Question Goes Here.
+        <div class="container" id="questionsContainer">
+            <p id="questionSelection"></p>
+            
             <!--Buttons for the answer here-->
-            <button id="submit"> Submit answer</button>
+            <div id="answerButtons" class="btn-grid"></div>
+                <button id="btnA"></button>
+                <button id="btnB"></button>
+                <button id="btnC"></button>
+                <button id="btnD"></button>
+
+            <p id="answerStatus"></p>
+
         </div>
 
         <div class="score" id="scoreBoard">
