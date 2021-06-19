@@ -62,28 +62,28 @@ function displayQuestion() {
       document.getElementById("btnC").innerHTML = questions[index].choices[2];
       document.getElementById("btnD").innerHTML = questions[index].choices[3];
 
-      // //listen for the click in the questionsContainer then if the answer is = correct then 
-      // var answerClick = document.getElementById("answerButtons")
+      //listen for the click in the questionsContainer then if the answer is = correct then 
+      var answerClick = document.getElementById("answerButtons")
 
-      // console.log(answerClick)
+      console.log(answerClick)
 
-      // answerClick.addEventListener('click', function()s{
+      answerClick.addEventListener('click', function()s{
 
-      //   if (
-      //     (answer === true && questions[index].answer === 't') ||
-      //     (answer === false && questions[index].answer === 'f')
-      //   ) {
-      //     // Increase score
-      //     score++;
-      //     // Tell the user what their answer status is
-      //     document.getElementById("answerStatus").innerHTML = questions[index].answer
+        if (
+          (answer === true && questions[index].answer === 't') ||
+          (answer === false && questions[index].answer === 'f')
+        ) {
+          // Increase score
+          score++;
+          // Tell the user what their answer status is
+          document.getElementById("answerStatus").innerHTML = questions[index].answer
 
           
-      //   } else {
-      //     alert('Wrong!');
-      //   }
+        } else {
+          alert('Wrong!');
+        }
 
-      // });
+      });
 
 
   }
