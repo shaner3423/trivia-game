@@ -1,35 +1,36 @@
 var questions= [
-      { questions: `What is THE `,  
-      choices: ["Shane", "Shaun", "Shawn", "Shain"], 
-      answer: 'Shane'},
+      { questions: `Where can you find the oldest ancient wonder of the world? `,  
+      choices: ["USA", "Egypt", "Brazil", "France"], 
+      answer: 'Egypt'},
 
-      { question: `What is my age`,  
-      choices: ["1", "S2", "3", "4"], 
-      answer: 'S2'},
+      { question: `Which actor starred in a total fo seven James Bond movies?`,  
+      choices: ["Pierce Brosnan", "Roger Moore", "Sean Connery", "Daniel Craig"], 
+      answer: 'Roger Moore'},
 
-      { questions: `What is my last name`,  
-      choices: ["Shane", "Crisostomo", "Shawn", "Shain"], 
-      answer: 'Crisostomo'},
+      { questions: `Who is the leader of Nirvana`,  
+      choices: ["Kurt Cobain", "Freddy Mercury", "Slash", "Billie Joe Armstrong"], 
+      answer: 'Kurt Cobain'},
 
-      { questions: `What is my middle name`,  
-      choices: ["Shane", "Hello", "Shawn", "Shain"], 
-      answer: 'Hello'},
+      { questions: `According to legend, what item is most effective against werewolves?`,  
+      choices: ["Cross", "Garlic", "Gold", "Silver"], 
+      answer: 'Silver'},
 
-      { questions: `What is my father's name`,  
-      choices: ["Shane", "Dad", "Shawn", "Shain"], 
-      answer: 'Dad'},
+      { questions: `A doctor with a PhD is a doctor of what?`,  
+      choices: ["Philosophy", "Phrenology", "Psychology", "Physical Therapy"], 
+      answer: 'Psychology'},
 
-      { questions: `What is my sister's name`,  
-      choices: ["Shane", "Sister", "Shawn", "Shain"], 
-      answer: 'Sister'},
+      { questions: `What is the largest state in the U.S.?`,  
+      choices: ["Maryland", "Alaska", "California", "Texas"], 
+      answer: 'Texas'},
 
-      { questions: `What is my mother's name`,  
-      choices: ["Mom", "Shane", "Shawn", "Shain"], 
-      answer: 'b'}
+      { questions: `What is the name of the Canadian national anthem?`,  
+      choices: ["O Canada", "O Red Maple", "March of the Puck Drop", "Leaf-Spangled Banner"], 
+      answer: 'O Canada'}
 ];
 
 
 var score = 0;
+var questionNumber = 0;
 var startButtonEl = document.getElementById("startButton")
 
 //start game button - when the button is click the timer starts
@@ -61,52 +62,67 @@ function displayQuestion() {
       document.getElementById("btnB").innerHTML = questions[index].choices[1];
       document.getElementById("btnC").innerHTML = questions[index].choices[2];
       document.getElementById("btnD").innerHTML = questions[index].choices[3];
+  };
+  appendChild(displayQuestion);
+  displayQuestion();
 
-      //listen for the click in the questionsContainer then if the answer is = correct then 
-      var answerClick = document.getElementById("answerButtons")
-
-      console.log(answerClick)
-
-      answerClick.addEventListener('click', function()s{
-
-        if (
-          (answer === true && questions[index].answer === 't') ||
-          (answer === false && questions[index].answer === 'f')
-        ) {
-          // Increase score
-          score++;
-          // Tell the user what their answer status is
-          document.getElementById("answerStatus").innerHTML = questions[index].answer
-
-          
-        } else {
-          alert('Wrong!');
-        }
-
-      });
-
-
-  }
-      
-
-      
-
-     
 };
 
+function beginGame() {
+  startDiv.style.display = "none";
+  questionContainer.style.display = "block";
+  quesPosition.style.display = "block";
+  finalStats.style.display = "none";
+  playAgainBtn.style.display = "none";
+  counter = 0;
+  correctAnswers = 0;
+  displayQuestion();
+}
+
+function emptyDiv() {
+  questionContainer.innerHTML = "";
+}
+
+
+function displayQuestionChoices() {
+  for (let i = 0; i < currentQuestion.choices.length; i++) {
+    var choice = document.createElement("h4");
+    choice.setAttribute("class", "choiceBG");
+    choice.setAttribute("data-value", currentQuestion.choices[i]);
+    choice.textContent = currentQuestion.choices[i];
+    questionContainer.appendChild(choice);
+  }
+}
+questionContainer.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (e.target.matches("h4")) {
+    var chosenAnswer = e.target.getAttribute("data-value");
+    compareAnswers(chosenAnswer);
+  }
+});
+
+function compareAnswers(chosenAnswer) {
+  if (chosenAnswer === currentQuestion.answer) {
+    correctAnswers++;
+    counter++;
+    playOrEnd();
+  } else {
+    counter++;
+    playOrEnd();
+  }
+}
+
+
 //then the start button game disappears when game is started
-// function hideStartButton() {
-//     var startButtonEl = document.getElementById("startGame");
-//     if (startButtonEl.style.display === "none") {
-//         startButtonEl.style.display = "block";
-//     } else {
-//         startButtonEl.style.display = "none";
-//     }
+function hideStartButton() {
+    var startButtonEl = document.getElementById("startGame");
+    if (startButtonEl.style.display === "none") {
+        startButtonEl.style.display = "block";
+    } else {
+        startButtonEl.style.display = "none";
+    }
    
-// };
-
-
-
+};
 
 //when timer runs out, then continue to next question
 
@@ -139,14 +155,3 @@ function displayQuestion() {
 
 
 
-
-//when the start button is clicked then the timer starts
-    // var seconds = document.getElementById("countdown").textContent;
-    // var countdownTimer = setInterval(function() {
-    //    seconds--;
-    //    document.getElementById("countdown").textContent = seconds;
-    //    //when timer reaches 0 then the user is alerted and then user is alerted
-    //    if (seconds <= 0) clearInterval(countdownTimer);
-
-    // }, 1000);
- 
